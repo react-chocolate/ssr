@@ -1,0 +1,46 @@
+{
+  "name": "@react-chocolate/ssr",
+  "version": "0.0.1",
+  "description": "React SSR routing with intelligent data resolvers.",
+  "author": "Juan David Castro <me@juandc.co> (juandc.co)",
+  "scripts": {
+    "build:server:dev": "webpack --config config/webpack.server.js --mode development",
+    "build:browser:dev": "webpack --config config/webpack.browser.js --mode development",
+    "build:dev": "npm run build:browser:dev && npm run build:server:dev",
+    "build:watch": "concurrently \"npm run build:browser:dev -- --watch\" \"npm run build:server:dev -- --watch\"",
+    "serve:dev": "nodemon build/server",
+    "start:dev": "npm run build:dev && concurrently \"npm run serve:dev\" \"npm run build:watch\"",
+    "build:server": "webpack --config config/webpack.server.js --mode production",
+    "build:browser": "webpack --config config/webpack.browser.js --mode production",
+    "build": "npm run build:browser && npm run build:server",
+    "serve": "node build/server",
+    "start": "npm run build && npm run serve"
+  },
+  "dependencies": {
+    "@babel/core": "^7.5.4",
+    "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
+    "@loadable/babel-plugin": "^5.10.0",
+    "@loadable/component": "^5.10.1",
+    "@loadable/server": "^5.9.0",
+    "@loadable/webpack-plugin": "^5.7.1",
+    "babel-loader": "^8.0.6",
+    "core-js": "2",
+    "express": "^4.17.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1",
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5",
+    "webpack-merge": "^4.2.1",
+    "webpack-node-externals": "^1.7.2"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.1",
+    "nodemon": "^1.19.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/react-chocolate/ssr"
+  }
+}
